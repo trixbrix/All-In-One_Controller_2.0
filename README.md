@@ -1,14 +1,14 @@
-# Trixbrix.eu All-In-One Controller 2.0
+# All-In-One Controller 2.0 - Trixbrix.eu
 
 This is the code powering the functionality of our All-In-One Controller. The controller is capable of controlling servos, LEDs and getting feedback from IR detectors.
 The code is organized as a simple Arduino / Plarform.io project. The heart of the controller is the ATmega328p. You can upload new firmware to the controller using a micro-USB cable.
 
-# How to set up the project
+## How to set up the project
 
-Here's a [detailed documentation](docs/Setting up the project.pdf) showing the installation process of VSCode and Platform.io plugin and the confiruation of the COM port on a Windows machine.
+Here's a [detailed documentation](docs/Setting%20up%20the%20project.pdf) showing the installation process of VSCode and Platform.io plugin and the confiruation of the COM port on a Windows machine.
 A very similar procedure is required on Linux or MacOS.
 
-# How to adjust the servo angles
+## How to adjust the servo angles
 
 The following [constants](lib/Trixbrix/Trixbrix/Defines.h) are responsible for the servo angles and are a good staring point for tweaking the code.
 
@@ -20,11 +20,11 @@ The following [constants](lib/Trixbrix/Trixbrix/Defines.h) are responsible for t
 #define DIFF 0 //angle which switch servo goes back after reaching position defined by values above, leave 0 for function disable
 ```
 
-# How to contribute
+## How to contribute
 
 If you find a bug or have a suggestion for a new feature, feel free to open an issue on Github. Code contributions are most welcome :)
 
-# License - MIT
+## License - MIT
 
 Copyright 2022 Trixbrix.eu
 
