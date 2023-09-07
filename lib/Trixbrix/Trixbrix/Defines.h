@@ -32,17 +32,17 @@
 
 #define EEPROM_ADDRESS 4
 
-#define SERVO1_RIGHT_CLICK 56 //angle for switch servo in position 1
-#define SERVO1_LEFT_CLICK 98 //angle for switch servo in position 2
-#define SERVO2_RIGHT_CLICK 0 //angle for boom barrier  servo in posiotion down
-#define SERVO2_LEFT_CLICK 88 //angle for boom barrier  servo in posiotion up
-#define DIFF 0 //angle which switch servo goes back after reaching position defined by values above, leave 0 for function disable
+#define SERVO1_RIGHT_CLICK 61 //angle for switch servo in position 1
+#define SERVO1_LEFT_CLICK 94 //angle for switch servo in position 2
+#define SERVO2_RIGHT_CLICK -2 //angle for boom barrier  servo in posiotion down
+#define SERVO2_LEFT_CLICK 86 //angle for boom barrier  servo in posiotion up
+#define DIFF 8 //angle which switch servo goes back after reaching position defined by values above, leave 0 for function disable
 
 #define COOLDOWN_MS 1100 //time [ms] during which controller is insensitive for signals from distance sensors, used to avoid false reactions caused by gaps between consecutive railroad cars
 
 #define SWITCH_ON_SERVO_DELAY_MS 50 //time [ms] after turning power on the switch servo when command for the servo is going to be sent, after whole switching sequence power is going to be turn off
 #define SWITCH_ON_SERVO_DURATION_MS 180 //time [ms] for which switch servo is powered in single sequence and can move
-#define SWITCH_ON_SERVO_LATENCY_MS 100 //latency [ms] which indicates how fast consecutive switch sequences can be performed
+#define SWITCH_ON_SERVO_LATENCY_MS 500 //latency [ms] which indicates how fast consecutive switch sequences can be performed
 
 #define SLOW_MOVE_SERVO_MOVE_DIVIDER 44 //number of steps in which single boom barrier servo move is divided, the more steps the slower move is going to be performed
 #define MOVE_SERVO_PERIOD_US 20000 //period [us] of a single steering signal, it's duty depends on angle where servo should stops

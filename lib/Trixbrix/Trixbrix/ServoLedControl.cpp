@@ -62,12 +62,6 @@ void moveServo(enum servos servo, unsigned int angle, unsigned int timesOfRepeat
               digitalWrite(pin, LOW);
               delayMicroseconds(MOVE_SERVO_PERIOD_US - microSeconds);
           }
-
-          if(servo != servo2) {
-              digitalWrite(SERVO1_POW, LOW);
-              digitalWrite(SERVO1_NEG_POW, LOW);
-              delay(SWITCH_ON_SERVO_LATENCY_MS);
-          }
 }
 
 //////////////////////////////////////// SLOW MOVE SERVO ////////////////////////////////////////
@@ -95,33 +89,59 @@ void slowMoveServo(enum servos servo, int startPosition, int endPosition) {
   
 }
 
+//////////////////////////////////////// CUT POWER TO SERVO ////////////////////////////////////////
+
+void disableServo(enum servos servo) {
+  switch(servo) {
+    case servo1: //turns servo 1
+        digitalWrite(SERVO1_POW, LOW);
+        break;
+    
+    case servo1_neg: //turns servo 1 (negated)
+        digitalWrite(SERVO1_NEG_POW, LOW);
+        break;
+
+    case servo2:
+      return;
+
+    default:
+      return;
+  }
+
+  delay(SWITCH_ON_SERVO_LATENCY_MS);
+}
+
 //////////////////////////////////////// STEERING POSITION 1 ////////////////////////////////////////
 
 void switchPosition1(void) {
-  moveServo(servo1, SERVO1_RIGHT_CLICK, (unsigned int)(SWITCH_ON_SERVO_DURATION_MS / 20));
+  moveServo(servo1, SERVO1_RIGHT_CLICK, 30);
+    if(DIFF) {
+      moveServo(servo1, SERVO1_RIGHT_CLICK + DIFF, 10);
+    }
+  disableServo(servo1);
 
-        if(DIFF)
-          moveServo(servo1, SERVO1_RIGHT_CLICK + DIFF, 10);
-
-  moveServo(servo1_neg, SERVO1_LEFT_CLICK, (unsigned int)(SWITCH_ON_SERVO_DURATION_MS / 20));
-
-        if(DIFF)
-          moveServo(servo1_neg, SERVO1_LEFT_CLICK + DIFF, 10);
+  moveServo(servo1_neg, SERVO1_LEFT_CLICK, 30);
+    if(DIFF) {
+      moveServo(servo1_neg, SERVO1_LEFT_CLICK - DIFF, 10);
+    }
+  disableServo(servo1_neg);
 }
 
 //////////////////////////////////////// STEERING POSITION 2 ////////////////////////////////////////
 
 void switchPosition2(void) {
-  moveServo(servo1, SERVO1_LEFT_CLICK, (unsigned int)(SWITCH_ON_SERVO_DURATION_MS / 20));
+  moveServo(servo1, SERVO1_LEFT_CLICK, 30);
+    if(DIFF) {
+      moveServo(servo1, SERVO1_LEFT_CLICK - DIFF, 10);
+    }
+  disableServo(servo1);
 
-        if(DIFF)
-          moveServo(servo1, SERVO1_LEFT_CLICK - DIFF, 10);
-
-  moveServo(servo1_neg, SERVO1_RIGHT_CLICK, (unsigned int)(SWITCH_ON_SERVO_DURATION_MS / 20));
-
-        if(DIFF)
-          moveServo(servo1_neg, SERVO1_RIGHT_CLICK + DIFF, 10);
-      }
+  moveServo(servo1_neg, SERVO1_RIGHT_CLICK, 30);
+    if(DIFF) {
+      moveServo(servo1_neg, SERVO1_RIGHT_CLICK + DIFF, 10);
+    }
+  disableServo(servo1_neg);
+}
 
 //////////////////////////////////////// POSITION 1 ////////////////////////////////////////
 
