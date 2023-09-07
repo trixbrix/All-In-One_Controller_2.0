@@ -7,6 +7,7 @@ void bothLedBlink(char blinks);
 void signalLedChange(int changeMode);
 void moveServo(enum servos servo, unsigned int angle, unsigned int timesOfRepeat);
 void slowMoveServo(enum servos servo, int startPosition, int endPosition);
+void disableServo(enum servos servo);
 void switchPosition1(void);
 void switchPosition2(void);
 void positionBoomBarrierClose(void);
